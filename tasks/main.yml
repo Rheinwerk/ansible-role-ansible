@@ -1,0 +1,19 @@
+---
+#
+# tasks file for ansible-role-ansible
+#
+# vim:et:ts=2:ft=ansible
+
+- name: Install dependencies via APT
+  apt: pkg={{ item }} state=present
+  with_items:
+    - python-pip
+    - python-dev
+    - libffi-dev
+    - libssl-dev
+- name: Install Ansible and dependenices via PIP
+  pip: name="{{ item }}"
+  with_items:
+    - markupsafe
+    - ansible
+
