@@ -12,11 +12,13 @@
     - libffi-dev
     - libssl-dev
 
-- name: Install Ansible and dependenices via PIP
+- name: Install Ansible and dependencies via PIP
   pip: name="{{ item }}"
   with_items:
     - markupsafe
     - netaddr
     - boto
+    - boto3
+    - passlib
     - ansible
 
