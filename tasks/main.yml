@@ -5,19 +5,20 @@
 # vim:et:ts=2:ft=ansible
 
 - name: Install dependencies via APT
-  apt: pkg={{ item }} state=present
-  with_items:
-    - python-pip
-    - python-dev
-    - libffi-dev
-    - libssl-dev
+  apt:
+    state: present
+    name:
+      - python-pip
+      - python-dev
+      - libffi-dev
+      - libssl-dev
 
 - name: Install Ansible and dependencies via PIP
-  pip: name="{{ item }}"
-  with_items:
-    - markupsafe
-    - netaddr
-    - boto
-    - boto3
-    - passlib
-    - ansible
+  pip:
+    name:
+      - markupsafe
+      - netaddr
+      - boto
+      - boto3
+      - passlib
+      - ansible
