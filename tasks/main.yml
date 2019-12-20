@@ -21,4 +21,4 @@
       - boto
       - boto3
       - passlib
-      - ansible
+      - "ansible{{ _ansible.version|default('')}}"
