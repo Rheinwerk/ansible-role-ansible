@@ -9,5 +9,13 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install yamllint
         run: sudo apt-get --yes install yamllint
-      - name: Lint the YAML
-        run: "find . -name '*.yml' -print0 | xargs -0 yamllint -c galaxy-yamllint.yaml"
+      - name: 'Lint the YAML as a Service :)'
+        uses: karancode/yamllint-github-action@master
+        with:
+          yamllint_file_or_dir: '.'
+          yamllint_config_filepath: 'galaxy-yamllint.yaml'
+          yamllint_strict: true
+          yamllint_comment: false
+
+
+
