@@ -1,0 +1,14 @@
+name: Run yamllint on ASPs
+
+on: [push]
+
+jobs:
+  yamllint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install yamllint
+        run: sudo apt-get --yes install yamllint
+      - name: Lint the YAML
+        run: "find . -name '*.yml' -print0 | xargs -0 yamllint -c galaxy-yamllint.yaml"
+
