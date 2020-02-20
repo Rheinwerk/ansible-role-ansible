@@ -11,4 +11,3 @@ jobs:
         run: sudo apt-get --yes install yamllint
       - name: Lint the YAML
         run: "find . -name '*.yml' -print0 | xargs -0 yamllint -c galaxy-yamllint.yaml"
-
