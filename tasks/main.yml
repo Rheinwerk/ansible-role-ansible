@@ -8,8 +8,8 @@
   apt:
     state: present
     name:
-      - python-pip
-      - python-dev
+      - "{{ 'python-pip' if ansible_distribution_version in ['14.04', '18.04'] else 'python3-pip' }}"
+      - "{{ 'python-dev' if ansible_distribution_version in ['14.04', '18.04'] else 'python3-dev' }}"
       - libffi-dev
       - libssl-dev
 
