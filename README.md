@@ -3,7 +3,7 @@ Ansible Installation
 
 This role can be used to install Ansible on Ubuntu
 
-[![Build Status](https://travis-ci.org/Rheinwerk/ansible-role-ansible.svg?branch=master)](https://travis-ci.org/Rheinwerk/ansible-role-ansible)
+[![Build Status](https://github.com/Rheinwerk/ansible-role-ansible/actions/workflows/ci.yml/badge.svg)](https://github.com/Rheinwerk/ansible-role-ansible/actions/workflows/ci.yml)
 
 Requirements
 ------------
