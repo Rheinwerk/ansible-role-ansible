@@ -16,9 +16,10 @@
 - name: Install Ansible and dependencies via PIP
   pip:
     name:
-      - markupsafe
+      - "MarkupSafe{{ _ansible.markupsafe_version | default('') }}"
       - netaddr
       - boto
       - boto3
       - passlib
-      - "ansible{{ _ansible.version | default('') }}"
+      - "Jinja2{{ _ansible.jinja2_version | default('') }}"
+      - "ansible{{ _ansible.ansible_version | default('') }}"
