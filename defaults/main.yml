@@ -1,5 +1,8 @@
+# Specify a pip compatible version specifier
+# like "==2.8.*" or ">=2.8,<2.9". Empty string
+# installs the latest version.
+
 _ansible:
-  # Specify a pip compatible version specifier
-  # like "==2.8.*" or ">=2.8,<2.9". Empty string
-  # installs the latest version.
-  version: ""
+  ansible_version: ""
+  jinja2_version: ""
+  markupsafe_version: ""
