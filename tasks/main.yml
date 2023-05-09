@@ -5,7 +5,7 @@
 # vim:et:ts=2:ft=ansible
 
 - name: Install dependencies via APT
-  apt:
+  ansible.builtin.apt:
     state: present
     name:
       - "{{ 'python-pip' if ansible_distribution_version in ['14.04', '18.04'] else 'python3-pip' }}"
@@ -14,7 +14,7 @@
       - libssl-dev
 
 - name: Install Ansible and dependencies via PIP
-  pip:
+  ansible.builtin.pip:
     name:
       - "MarkupSafe{{ _ansible.markupsafe_version | default('') }}"
       - netaddr
