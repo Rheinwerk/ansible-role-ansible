@@ -22,4 +22,4 @@
       - boto3
       - passlib
       - "Jinja2{{ _ansible.jinja2_version | default('') }}"
-      - "ansible{{ _ansible.ansible_version | default('') }}"
+      - "ansible-core{{ _ansible.ansible_version | default('') }}"
