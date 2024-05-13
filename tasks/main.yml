@@ -1,26 +1,38 @@
 ---
-#
-# tasks file for ansible-role-ansible
-#
-# vim:et:ts=2:ft=ansible
-
-- name: Install dependencies via APT
-  ansible.builtin.apt:
-    state: present
-    name:
-      - "{{ 'python-pip' if ansible_distribution_version in ['14.04', '18.04'] else 'python3-pip' }}"
-      - "{{ 'python-dev' if ansible_distribution_version in ['14.04', '18.04'] else 'python3-dev' }}"
-      - libffi-dev
-      - libssl-dev
-
 - name: Install Ansible and dependencies via PIP
   ansible.builtin.pip:
     name:
-      - "MarkupSafe{{ _ansible.markupsafe_version | default('') }}"
       - netaddr
-      - boto
       - boto3
+      - botocore
       - passlib
-      - "Jinja2{{ _ansible.jinja2_version | default('') }}"
-      - "requests{{ _ansible.requests_version | default('') }}"
+      # Required for Postgres
+      - psycopg2-binary
+      # Required for MySQL
+      - PyMySQL
+      # Required for different Ansible modules
+      - requests
+      - wheel
       - "ansible-core{{ _ansible.ansible_version | default('') }}"
+    virtualenv_command: /usr/bin/python3.12 -m venv /opt/ansible_virtualenv
+    virtualenv: /opt/ansible_virtualenv
+
+- name: Create symbolic links
+  ansible.builtin.file:
+    src: "/opt/ansible_virtualenv/bin/{{ item }}"
+    dest: "/usr/bin/{{ item }}"
+    owner: root
+    group: root
+    state: link
+  loop:
+    - ansible
+    - ansible-config
+    - ansible-connection
+    - ansible-console
+    - ansible-doc
+    - ansible-galaxy
+    - ansible-inventory
+    - ansible-playbook
+    - ansible-pull
+    - ansible-test
+    - ansible-vault
