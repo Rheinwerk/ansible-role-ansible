@@ -6,6 +6,9 @@
       - boto3
       - botocore
       - passlib
+      # Required for MySQL
+      - PyMySQL
+      # Required for different Ansible modules
       - requests
       - wheel
       - "ansible-core{{ _ansible.ansible_version | default('') }}"
