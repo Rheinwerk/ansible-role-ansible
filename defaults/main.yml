@@ -6,3 +6,4 @@ _ansible:
   ansible_version: ""
   jinja2_version: ""
   markupsafe_version: ""
+  requests_version: ""
