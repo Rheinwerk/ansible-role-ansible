@@ -6,6 +6,8 @@
       - boto3
       - botocore
       - passlib
+      # Required for Postgres
+      - psycopg2-binary
       # Required for MySQL
       - PyMySQL
       # Required for different Ansible modules
