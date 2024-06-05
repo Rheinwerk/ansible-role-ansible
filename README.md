@@ -19,7 +19,27 @@ None.
 Dependencies
 ------------
 
-None.
+Python 3.12 and Pip installed. You can use the following ansible tasks to ensure requirements are met:
+
+```yaml
+- name: Add Deadsnakes APT repository
+  ansible.builtin.apt_repository:
+    repo: ppa:deadsnakes/ppa
+
+- name: Install python3.12 via APT
+  ansible.builtin.apt:
+    state: present
+    update_cache: true
+    name:
+      - python3.12
+      - python3.12-dev
+      - python3.12-venv
+
+- name: Install python3-pip via APT
+  ansible.builtin.apt:
+    state: present
+    name: python3-pip
+```
 
 
 Example Playbook
