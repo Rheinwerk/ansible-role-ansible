@@ -14,7 +14,7 @@
       - requests
       - wheel
       - "ansible-core{{ _ansible.ansible_version | default('') }}"
-    virtualenv_command: /usr/bin/python3.12 -m venv /opt/ansible_virtualenv
+    virtualenv_command: /usr/bin/python3.12 -m venv
     virtualenv: /opt/ansible_virtualenv
 
 - name: Create symbolic links
