@@ -2,6 +2,8 @@
 - name: Install Ansible and dependencies via PIP
   ansible.builtin.pip:
     name:
+      # Required for deb822_repository
+      - python-debian
       - netaddr
       - boto3
       - botocore
