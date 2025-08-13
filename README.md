@@ -19,27 +19,7 @@ None.
 Dependencies
 ------------
 
-Python 3.12 and Pip installed. You can use the following ansible tasks to ensure requirements are met:
-
-```yaml
-- name: Add Deadsnakes APT repository
-  ansible.builtin.apt_repository:
-    repo: ppa:deadsnakes/ppa
-
-- name: Install python3.12 via APT
-  ansible.builtin.apt:
-    state: present
-    update_cache: true
-    name:
-      - python3.12
-      - python3.12-dev
-      - python3.12-venv
-
-- name: Install python3-pip via APT
-  ansible.builtin.apt:
-    state: present
-    name: python3-pip
-```
+Python and Pip installed.
 
 
 Example Playbook
@@ -50,7 +30,9 @@ Including an example of how to use your role (for instance, with variables passe
     - hosts: servers
       var:
         ansible:
-          ...
+          ansible_version: "" # latest
+          python_binary: "/usr/bin/python3"
+          virtualenv: "/opt/ansible_virtualenv"
       roles:
          - { role: ansible, tags: [ 'ansible' ], _ansible: "{{ ansible }}" }
 
@@ -62,5 +44,4 @@ Please see LICENSE.
 Author Information
 ------------------
 
-Original author is [Daniel Schneller](https://github.com/dschneller) as member of the [Rheinwerk](https://github.com/Rheinwerk) project.
-
+Original author is [Michael Schmitz](https://github.com/eifelmicha) as member of the [Rheinwerk](https://github.com/Rheinwerk) project.

@@ -4,3 +4,5 @@
 
 _ansible:
   ansible_version: ""
+  python_binary: "/usr/bin/python3"
+  virtualenv: "/opt/ansible_virtualenv"
