@@ -1,6 +1,5 @@
 galaxy_info:
-  author: Daniel Schneller
-  namespace: rheinwerk
+  author: rheinwerk
   role_name: ansible
   description: Installs Ansible from pip on Ubuntu Trusty
   company: Rheinwerk
