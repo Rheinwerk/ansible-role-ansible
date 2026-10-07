@@ -1,0 +1,8 @@
+---
+# Role prerequisites (see README): Python 3 with venv and pip.
+- name: Install python3-venv and python3-pip
+  ansible.builtin.apt:
+    name:
+      - python3-venv
+      - python3-pip
+    state: present
