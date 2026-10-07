@@ -36,5 +36,9 @@ jobs:
       molecule_debug: ${{ format('{0}', inputs.molecule_debug) }}
       args: ${{ inputs.args }}
       molecule_ref: ${{ inputs.molecule_ref || 'main' }}
+      matrix: >-
+        [{"distro": "pkr-debian-13", "ansible_scenario": "ansible_current", "experimental": false},
+         {"distro": "pkr-debian-13", "ansible_scenario": "ansible_next", "experimental": true},
+         {"distro": "pkr-debian-13", "ansible_scenario": "ansible_latest", "experimental": true}]
     # passes GALAXY_API_KEY for the release job
     secrets: inherit
