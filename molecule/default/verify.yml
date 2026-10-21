@@ -1,0 +1,18 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Hash a password with passlib's bcrypt in the venv
+      ansible.builtin.command:
+        argv:
+          - /opt/ansible_virtualenv/bin/python
+          - -c
+          - "import passlib.hash as h; print(h.bcrypt.using(rounds=4, ident='2a').hash('test'))"
+      register: verify_bcrypt
+      changed_when: false
+
+    - name: Assert a 2a bcrypt hash
+      ansible.builtin.assert:
+        that:
+          - verify_bcrypt.stdout.startswith('$2a$04$')
