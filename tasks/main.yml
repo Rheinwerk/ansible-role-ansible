@@ -10,6 +10,9 @@
       # required for xml parsing
       - lxml
       - passlib
+      # passlib's bcrypt backend: Python >= 3.13 has no crypt module to fall back to.
+      # bcrypt 5 breaks passlib 1.7.4 (rejects passwords over 72 bytes in its self-test)
+      - bcrypt<5
       # Required for Postgres
       - psycopg2-binary
       # Required for MySQL
