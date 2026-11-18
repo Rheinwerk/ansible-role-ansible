@@ -1,0 +1,17 @@
+---
+argument_specs:
+  main:
+    short_description: Install ansible-core from pip into a virtualenv and link its commands into /usr/bin
+    options:
+      _ansible_ansible_version:
+        type: str
+        description:
+          - pip version specifier for ansible-core, like C(==2.21.5) or C(>=2.20,<2.22); an empty string installs the latest version.
+      _ansible_python_binary:
+        type: str
+        description:
+          - Absolute path of the Python interpreter that creates the virtualenv.
+      _ansible_virtualenv:
+        type: str
+        description:
+          - Absolute path of the virtualenv; the C(ansible*) commands in /usr/bin link into its C(bin) directory.

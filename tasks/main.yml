@@ -1,4 +1,9 @@
 ---
+- name: Assert
+  ansible.builtin.import_tasks: assert.yml
+  tags:
+    - always
+
 - name: Install Ansible and dependencies via PIP
   ansible.builtin.pip:
     name:

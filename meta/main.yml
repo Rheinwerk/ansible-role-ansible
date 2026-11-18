@@ -1,15 +1,16 @@
+---
 galaxy_info:
   author: rheinwerk
   role_name: ansible
-  description: Installs Ansible from pip on Ubuntu Trusty
+  description: Installs ansible-core from pip into a virtualenv
   company: Rheinwerk
   license: license (GPLv3)
-  min_ansible_version: 2.9.0
+  min_ansible_version: "2.18"
   platforms:
-    - name: Ubuntu
+    - name: Debian
       versions:
-        - focal
-        - jammy
+        - bookworm
+        - trixie
   galaxy_tags:
     - ansible
 dependencies: []

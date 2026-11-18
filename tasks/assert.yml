@@ -1,0 +1,30 @@
+---
+- name: Assert _ansible_ansible_version is empty or a pip version specifier
+  ansible.builtin.assert:
+    that:
+      - _ansible_ansible_version is string
+      - _ansible_ansible_version == '' or _ansible_ansible_version is match('^(===?|~=|!=|<=?|>=?)[0-9][0-9A-Za-z.*+!]*(,(===?|~=|!=|<=?|>=?)[0-9][0-9A-Za-z.*+!]*)*\\Z')
+    fail_msg: "_ansible_ansible_version must be empty or a pip version specifier without whitespace, like ==2.21.5 or >=2.20,<2.22"
+    quiet: true
+  tags:
+    - always
+
+- name: Assert _ansible_python_binary is an absolute path
+  ansible.builtin.assert:
+    that:
+      - _ansible_python_binary is string
+      - _ansible_python_binary is match('^/\\S+\\Z')
+    fail_msg: "_ansible_python_binary must be an absolute path without whitespace"
+    quiet: true
+  tags:
+    - always
+
+- name: Assert _ansible_virtualenv is an absolute path
+  ansible.builtin.assert:
+    that:
+      - _ansible_virtualenv is string
+      - _ansible_virtualenv is match('^/\\S+\\Z')
+    fail_msg: "_ansible_virtualenv must be an absolute path without whitespace"
+    quiet: true
+  tags:
+    - always
