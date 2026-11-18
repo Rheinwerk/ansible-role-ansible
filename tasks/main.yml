@@ -1,4 +1,9 @@
 ---
+- name: Assert
+  ansible.builtin.import_tasks: assert.yml
+  tags:
+    - always
+
 - name: Install Ansible and dependencies via PIP
   ansible.builtin.pip:
     name:
@@ -20,13 +25,13 @@
       # Required for different Ansible modules
       - requests
       - wheel
-      - "ansible-core{{ _ansible.ansible_version | default('') }}"
-    virtualenv_command: "{{ _ansible.python_binary }} -m venv"
-    virtualenv: "{{ _ansible.virtualenv }}"
+      - "ansible-core{{ _ansible_ansible_version }}"
+    virtualenv_command: "{{ _ansible_python_binary }} -m venv"
+    virtualenv: "{{ _ansible_virtualenv }}"
 
 - name: Create symbolic links
   ansible.builtin.file:
-    src: "{{ _ansible.virtualenv }}/bin/{{ item }}"
+    src: "{{ _ansible_virtualenv }}/bin/{{ item }}"
     dest: "/usr/bin/{{ item }}"
     owner: root
     group: root
