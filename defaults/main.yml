@@ -1,8 +1,12 @@
-# Specify a pip compatible version specifier
-# like "==2.8.*" or ">=2.8,<2.9". Empty string
-# installs the latest version.
+---
+# defaults file for ansible-role-ansible
 
-_ansible:
-  ansible_version: ""
-  python_binary: "/usr/bin/python3"
-  virtualenv: "/opt/ansible_virtualenv"
+# pip version specifier for ansible-core, like "==2.21.5" or ">=2.20,<2.22";
+# an empty string installs the latest version
+_ansible_ansible_version: "==2.21.5"
+
+# Python interpreter that creates the virtualenv
+_ansible_python_binary: "/usr/bin/python3"
+
+# Virtualenv that holds ansible-core and its Python dependencies
+_ansible_virtualenv: "/opt/ansible_virtualenv"
