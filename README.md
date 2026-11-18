@@ -1,14 +1,14 @@
 Ansible Installation
 =========
 
-This role can be used to install Ansible on Ubuntu
+This role installs ansible-core from pip into a virtualenv on Debian.
 
 [![Build Status](https://github.com/Rheinwerk/ansible-role-ansible/actions/workflows/ci.yml/badge.svg)](https://github.com/Rheinwerk/ansible-role-ansible/actions/workflows/ci.yml)
 
 Requirements
 ------------
 
-None.
+ansible-core 2.18 or newer.
 
 Role Variables
 --------------
@@ -24,6 +24,15 @@ differ. The defaults are the CenterDevice values.
 
 The role installs ansible-core and the Python libraries the CenterDevice playbooks need into the
 virtualenv and links the `ansible*` commands into `/usr/bin`.
+
+ansible-core 2.21 needs Python 3.12 or newer. Debian 13 works with the defaults; on Debian 12,
+whose `python3` is 3.11, set `_ansible_python_binary` to a Python 3.12 interpreter (or
+`_ansible_ansible_version` to a release that still supports 3.11).
+
+The role validates the variables before it installs anything: `meta/argument_specs.yml` checks the
+types, `tasks/assert.yml` (tag `always`) requires an empty string or a pip version specifier
+without whitespace (`==2.21.5`, `>=2.20,<2.22`) and absolute paths without whitespace for the
+interpreter and the virtualenv.
 
 Until v1.3.1 the role took one `_ansible` dict with the keys `ansible_version`, `python_binary` and
 `virtualenv` instead.
