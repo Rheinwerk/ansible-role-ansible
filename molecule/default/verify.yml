@@ -33,6 +33,6 @@
     - name: Assert the default ansible-core version, linked from the venv
       ansible.builtin.assert:
         that:
-          - verify_version.stdout_lines[0] is search('\[core 2\.21\.5\]')
+          - verify_version.stdout_lines[0] is search('\\[core 2\\.21\\.5\\]')
           - verify_link.stat.islnk
           - verify_link.stat.lnk_target == '/opt/ansible_virtualenv/bin/ansible-playbook'
