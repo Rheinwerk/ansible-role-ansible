@@ -16,3 +16,23 @@
       ansible.builtin.assert:
         that:
           - verify_bcrypt.stdout.startswith('$2a$04$')
+
+    - name: Read the ansible-core version through the /usr/bin link
+      ansible.builtin.command:
+        argv:
+          - /usr/bin/ansible-playbook
+          - --version
+      register: verify_version
+      changed_when: false
+
+    - name: Stat the ansible-playbook link
+      ansible.builtin.stat:
+        path: /usr/bin/ansible-playbook
+      register: verify_link
+
+    - name: Assert the default ansible-core version, linked from the venv
+      ansible.builtin.assert:
+        that:
+          - verify_version.stdout_lines[0] is search('\\[core 2\\.21\\.5\\]')
+          - verify_link.stat.islnk
+          - verify_link.stat.lnk_target == '/opt/ansible_virtualenv/bin/ansible-playbook'
